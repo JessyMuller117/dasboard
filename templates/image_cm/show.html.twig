@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ImageCM{% endblock %}
+
+{% block body %}
+    <h1>ImageCM</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ image_c_m.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom_image</th>
+                <img src="/uploads/{{ image_c_m.nomImage }}" alt="">
+                <img src="https://cdn.pixabay.com/photo/2020/03/26/10/58/norway-4970080_1280.jpg" alt="">
+                
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_image_c_m_index') }}">back to list</a>
+
+    <a href="{{ path('app_image_c_m_edit', {'id': image_c_m.id}) }}">edit</a>
+
+    {{ include('image_cm/_delete_form.html.twig') }}
+{% endblock %}

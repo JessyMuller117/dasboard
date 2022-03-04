@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ImageCM{% endblock %}
+
+{% block body %}
+    <h1>Edit ImageCM</h1>
+
+    {{ include('image_cm/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_image_c_m_index') }}">back to list</a>
+
+    {{ include('image_cm/_delete_form.html.twig') }}
+{% endblock %}

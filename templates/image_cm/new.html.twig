@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ImageCM{% endblock %}
+
+{% block body %}
+    <h1>Create new ImageCM</h1>
+
+    {{ include('image_cm/_form.html.twig') }}
+
+    <a href="{{ path('app_image_c_m_index') }}">back to list</a>
+{% endblock %}

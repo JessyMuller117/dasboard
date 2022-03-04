@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MessageCM{% endblock %}
+
+{% block body %}
+    <h1>Create new MessageCM</h1>
+
+    {{ include('message_cm/_form.html.twig') }}
+
+    <a href="{{ path('message_cm_index') }}">back to list</a>
+{% endblock %}
