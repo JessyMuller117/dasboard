@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MessageCommunityManager{% endblock %}
+
+{% block body %}
+    <h1>MessageCommunityManager</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ message_community_manager.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ message_community_manager.titre }}</td>
+            </tr>
+            <tr>
+                <th>Texte</th>
+                <td>{{ message_community_manager.texte }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{% for img in message_community_manager.imagecm %}
+                    <img src="/uploads/{{ img.name }}" alt="">
+                {% endfor %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_message_community_manager_index') }}">back to list</a>
+
+    <a href="{{ path('app_message_community_manager_edit', {'id': message_community_manager.id}) }}">edit</a>
+
+    {{ include('message_community_manager/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,16 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Client index{% endblock %}
+{% block title %}Liste des Clients{% endblock %}
 
 {% block body %}
-    <h1>Client index</h1>
-<div class="container">
+
+<section id="table_client" class="container-fluid">
+    <h1>Liste des Clients</h1>
+
 
 
     <table class="table table-dark">
         <thead>
             <tr>
-                <th scope="col">Id</th>
+                <th class="test" scope="col">Id</th>
                 <th scope="col">Nom_entreprise</th>
                 <th scope="col">Siret</th>
                 <th scope="col">Adresse</th>
@@ -37,8 +39,11 @@
                 <td>{{ client.email }}</td>
                 <td>{{ client.telephone }}</td>
                 <td>
-                    <a href="{{ path('app_client_show', {'id': client.id}) }}">show</a>
-                    <a href="{{ path('app_client_edit', {'id': client.id}) }}">edit</a>
+                <button type="button" class="btn btn-info btn-sm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="{{ path('app_client_show', {'id': client.id}) }}"><img src="https://img.icons8.com/ios-filled/24/000000/sharingan.png"/></a></font></font></button>
+                <button type="button" class="btn btn-warning btn-sm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="{{ path('app_client_edit', {'id': client.id}) }}"><img src="https://img.icons8.com/material-outlined/24/000000/pencil--v1.png"/></a></font></font></button>
+
+                    
+                    
                 </td>
             </tr>
         {% else %}
@@ -48,7 +53,11 @@
         {% endfor %}
         </tbody>
     </table>
-</div>
 
-    <a href="{{ path('app_client_new') }}">Create new</a>
+                <button type="button" class="btn btn-success btn-sm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><a href="{{ path('app_client_new') }}"><img src="https://img.icons8.com/fluency-systems-regular/24/000000/add-administrator.png"/>Ajouter un client</a></font></font></button>
+    
+
+</section>
+
+
 {% endblock %}

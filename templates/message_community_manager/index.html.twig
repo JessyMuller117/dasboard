@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MessageCommunityManager index{% endblock %}
+
+{% block body %}
+    <h1>MessageCommunityManager index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                
+                <th>Titre</th>
+                <th>Texte</th>
+                <th>Images</th>
+                <th>Clients</th>
+                <th>actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        
+        {% for message_community_manager in message_community_managers %}
+
+            <tr>
+                <td>{{ message_community_manager.id }}</td>
+               
+                <td>{{ message_community_manager.titre }}</td>
+                <td>{{ message_community_manager.texte }}</td>
+                 <td>{% for img in message_community_manager.imagecm %}
+                    <img width="60px" src="/uploads/{{ img.name }}" alt="">
+                {% endfor %}</td>
+                <td>{{message_community_manager.client.nomentreprise}}</td>
+                
+                <td>
+                    <a href="{{ path('app_message_community_manager_show', {'id': message_community_manager.id}) }}">show</a>
+                    <a href="{{ path('app_message_community_manager_edit', {'id': message_community_manager.id}) }}">edit</a>
+                </td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_message_community_manager_new') }}">Create new</a>
+{% endblock %}

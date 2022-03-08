@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ClientRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ClientRepository::class)]
@@ -39,6 +41,14 @@ class Client
 
     #[ORM\Column(type: 'string', length: 20)]
     private $telephone;
+
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: MessageCommunityManager::class)]
+    private $message;
+
+    public function __construct()
+    {
+        $this->message = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -149,6 +159,36 @@ class Client
     public function setTelephone(string $telephone): self
     {
         $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MessageCommunityManager>
+     */
+    public function getMessage(): Collection
+    {
+        return $this->message;
+    }
+
+    public function addMessage(MessageCommunityManager $message): self
+    {
+        if (!$this->message->contains($message)) {
+            $this->message[] = $message;
+            $message->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMessage(MessageCommunityManager $message): self
+    {
+        if ($this->message->removeElement($message)) {
+            // set the owning side to null (unless already changed)
+            if ($message->getClient() === $this) {
+                $message->setClient(null);
+            }
+        }
 
         return $this;
     }

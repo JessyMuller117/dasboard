@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit MessageCommunityManager{% endblock %}
+
+{% block body %}
+    <h1>Edit MessageCommunityManager</h1>
+
+    {{ include('message_community_manager/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_message_community_manager_index') }}">back to list</a>
+
+    {{ include('message_community_manager/_delete_form.html.twig') }}
+{% endblock %}
